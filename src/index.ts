@@ -1,4 +1,4 @@
-import { createApp } from "createApp";
+import { createApp } from "./createApp";
 
 const app = createApp();
 const PORT = 3000;
