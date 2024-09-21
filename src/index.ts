@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = createApp();
 app.use(helmet());
-
+console.log(config)
 console.log('Application Name: ' + config.get('name'))
 console.log('Mail Server: ' + config.get('mail.host'))
 if (app.get('env') === 'development') {
