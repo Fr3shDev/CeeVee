@@ -6,21 +6,7 @@ import mongoose from "mongoose";
 const router = Router();
 
 router.post('/', async (request: Request, response: Response) => {
-    const { error } = validateUser(request.body);
-    if (error) return response.status(400).send(error.details[0].message);
-
-    let user = await userSchema.findOne({ email: request.body.email})
-    if (user) return response.status(400).send('User already registered');
-
-    user = new userSchema({
-        username: request.body.username,
-        email: request.body.email,
-        password: request.body.password
-    });
-
-    await user.save();
-
-    response.send(user);
+    
 });
 
 // /api/users
