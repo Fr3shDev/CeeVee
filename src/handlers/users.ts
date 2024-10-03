@@ -1,10 +1,10 @@
 import { CreateUserDto } from "dtos/CreateUser.dto";
-import { Request, Response } from "express-serve-static-core";
+import { NextFunction, Request, Response } from "express-serve-static-core";
 import { userSchema, validateUser } from "models/user";
 import { CreateUserQueryParams } from "types/query-params";
 import { User } from "types/response";
 
-export async function registerUser (request: Request, response: Response) {
+export async function registerUser (request: Request, response: Response, next: NextFunction) {
     const { error } = validateUser(request.body);
     if (error) return response.status(400).send(error.details[0].message);
 
@@ -21,6 +21,7 @@ export async function registerUser (request: Request, response: Response) {
 
     response.send(user);
 }
+
 export function getUsers(request: Request, response: Response) {
     response.send([]);
 }
