@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { UserInterface } from "interfaces/user.interface";
 
 // This returns a class so we use pascal naming convention 'User'
-const userSchema = mongoose.model('User', new mongoose.Schema({
+const User = mongoose.model('User', new mongoose.Schema({
     username: {
         type: String, 
         required: true, 
@@ -40,4 +40,4 @@ function validateUser(user: UserInterface) {
     return schema.validate(user);
 }
 
-export { userSchema, validateUser };
+export { User, validateUser };
