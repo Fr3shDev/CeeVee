@@ -30,7 +30,7 @@ export function getUser(request: Request, response: Response) {
     response.send({});
 }
 
-export function createUser(request: Request<{}, {}, CreateUserDto, CreateUserQueryParams>, response: Response<User>) {
+export function createUser(request: Request<{}, {}, CreateUserDto, CreateUserQueryParams>, response: Response<UserResponseInterface>) {
     response.status(201).send({
         id: 1,
         username: "Hans",
