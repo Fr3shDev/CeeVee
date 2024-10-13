@@ -1,6 +1,6 @@
 import { CreateUserDto } from "dtos/CreateUser.dto";
 import { NextFunction, Request, Response } from "express-serve-static-core";
-import { userSchema, validateUser } from "models/user";
+import { User, validateUser } from "models/user";
 import { CreateUserQueryParams } from "types/query-params";
 import { UserResponseInterface } from "types/response";
 
