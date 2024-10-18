@@ -5,25 +5,7 @@ import mongoose from "mongoose";
 
 const router = Router();
 
-router.post('/', (request: Request, response: Response) => {
-    const { error } = validateUser(request.body);
-    if (error) response.status(400).send(error.details[0].message);
 
-    let user = User.findOne({ email: request.body.email})
-    user.then((user) => {
-        if (user) response.status(400).send('User already registered');
-
-        user = new User({
-            username: request.body.username,
-            email: request.body.email,
-            password: request.body.password
-        });
-
-        user.save().then(() => {
-            response.send(user);
-        });
-    });
-});
 
 router.post('/', async (req: Request, res: Response) => {
     const { error } = validateUser(req.body);
