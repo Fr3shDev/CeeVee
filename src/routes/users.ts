@@ -1,7 +1,6 @@
 import { Router, Request, Response } from "express";
 import { createUser, getUser, getUsers } from "../handlers/users";
-import { User, validateUser } from "models/user";
-import mongoose from "mongoose";
+import { User, validateUser } from "../models/user";
 
 const router = Router();
 
@@ -10,7 +9,7 @@ const router = Router();
 router.post('/', async (request: Request, response: Response): Promise<void> => {
     const { error } = validateUser(request.body);
     if (error){
-        response.status(400).send(error.details[0].message);
+        response.status(400).send(error.details[0].message);  
         return;
     } 
 
