@@ -20,11 +20,7 @@ router.post('/', async (request: Request, response: Response): Promise<void> => 
         return;
     }
 
-    user = new User({
-        username: request.body.username,
-        email: request.body.email,
-        password: request.body.password
-    });
+    user = new User();
 
     await user.save();
 
