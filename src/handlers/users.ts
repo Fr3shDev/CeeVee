@@ -5,7 +5,6 @@ import { User } from "types/response";
 
 export function getUsers(request: Request, response: Response) {
     response.send([]);
-    request.customField
 }
 
 export function getUser(request: Request, response: Response) {
