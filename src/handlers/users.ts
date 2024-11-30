@@ -1,5 +1,5 @@
 import { CreateUserDto } from "dtos/CreateUser.dto";
-import { Request, Response } from "express";
+import { Request, Response } from "express-serve-static-core";
 import { CreateUserQueryParams } from "types/query-params";
 import { User } from "types/response";
 
