@@ -1,4 +1,5 @@
 import { createApp } from "./createApp";
+import passport from "passport";
 
 const app = createApp();
 const PORT = 3000;
