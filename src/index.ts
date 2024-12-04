@@ -2,6 +2,7 @@ import { createApp } from "./createApp";
 import passport from "passport";
 import dotenv from "dotenv";
 import helmet from "helmet";
+import morgan = require("morgan");
 
 dotenv.config();
 
