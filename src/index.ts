@@ -8,6 +8,11 @@ dotenv.config();
 
 const app = createApp();
 app.use(helmet());
+
+if (app.get('env') === 'development') {
+    app.use(morgan('tiny'));
+    console.log('Morgan enabled...');
+}
 const port = process.env.PORT || 5000;
 
 
