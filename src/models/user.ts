@@ -1,11 +1,6 @@
 import Joi from "joi";
 import mongoose from "mongoose";
-
-interface User {
-    username: string;
-    email: string;
-    password: string;
-}
+import { User } from "interfaces/user.interface";
 
 const userSchema = mongoose.model('User', new mongoose.Schema({
     username: {
@@ -40,4 +35,4 @@ function validateUser(user: User) {
     return schema.validate(user);
 }
 
-export { userSchema, validateUser, User };
+export { userSchema, validateUser };
