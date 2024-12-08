@@ -22,6 +22,8 @@ router.post('/', async (request: Request, response: Response): Promise<void> => 
 
     user = new User(_.pick(request.body, ['username', 'email', 'password']));
 
+    const salt = await bcrypt.genSalt(10);
+
     await user.save();
 
     response.send(_.pick(user, ['_id', 'username', 'email']));
