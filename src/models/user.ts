@@ -2,6 +2,7 @@ import Joi from "joi";
 import mongoose from "mongoose";
 import { User } from "interfaces/user.interface";
 
+// This returns a class so we use pascal naming convention 'User'
 const userSchema = mongoose.model('User', new mongoose.Schema({
     username: {
         type: String, 
