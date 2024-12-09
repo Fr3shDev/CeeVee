@@ -2,7 +2,7 @@ import { CreateUserDto } from "dtos/CreateUser.dto";
 import { NextFunction, Request, Response } from "express-serve-static-core";
 import { userSchema, validateUser } from "models/user";
 import { CreateUserQueryParams } from "types/query-params";
-import { User } from "types/response";
+import { UserResponseInterface } from "types/response";
 
 export async function registerUser (request: Request, response: Response, next: NextFunction) {
     const { error } = validateUser(request.body);
