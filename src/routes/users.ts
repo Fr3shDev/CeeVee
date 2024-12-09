@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
 import { createUser, getUser, getUsers } from "../handlers/users";
-import { userSchema, validateUser } from "models/user";
+import { User, validateUser } from "models/user";
 import mongoose from "mongoose";
 
 const router = Router();
