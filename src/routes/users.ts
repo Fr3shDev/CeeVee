@@ -5,22 +5,42 @@ import mongoose from "mongoose";
 
 const router = Router();
 
-router.post('/', async (request: Request, response: Response) => {
+router.post('/', (request: Request, response: Response) => {
     const { error } = validateUser(request.body);
-    if (error) return response.status(400).send(error.details[0].message);
+    if (error) response.status(400).send(error.details[0].message);
 
-    let user = await User.findOne({ email: request.body.email})
-    if (user) return response.status(400).send('User already registered');
+    let user = User.findOne({ email: request.body.email})
+    user.then((user) => {
+        if (user) response.status(400).send('User already registered');
+
+        user = new User({
+            username: request.body.username,
+            email: request.body.email,
+            password: request.body.password
+        });
+
+        user.save().then(() => {
+            response.send(user);
+        });
+    });
+});
+
+router.post('/', async (req: Request, res: Response) => {
+    const { error } = validateUser(req.body);
+    if (error) return res.status(400).send(error.details[0].message);
+
+    let user = await User.findOne({ email: req.body.email})
+    if (user) return res.status(400).send('User already registered');
 
     user = new User({
-        username: request.body.username,
-        email: request.body.email,
-        password: request.body.password
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
     });
 
     await user.save();
 
-    response.send(user);
+    res.send(user);
 });
 
 // /api/users
