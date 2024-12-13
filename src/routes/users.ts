@@ -1,4 +1,4 @@
-import { Router, Request, Response } from "express";
+import { Router, Request, Response, RequestHandler } from "express";
 import { createUser, getUser, getUsers } from "../handlers/users";
 import { User, validateUser } from "models/user";
 import mongoose from "mongoose";
@@ -23,7 +23,7 @@ router.post('/', async (req: Request, res: Response) => {
     await user.save();
 
     res.send(user);
-});
+}) as RequestHandler;
 
 // /api/users
 router.get('/', getUsers);
