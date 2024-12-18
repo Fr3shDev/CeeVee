@@ -1,6 +1,5 @@
 import { Router, Request, Response } from "express";
 import { createUser, getUser, getUsers, registerUser } from "../handlers/users";
-import _ from "lodash";
 
 const router = Router();
 
