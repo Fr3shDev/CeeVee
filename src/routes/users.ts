@@ -1,4 +1,4 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
 import { createUser, getUser, getUsers, registerUser } from "../handlers/users";
 
 const router = Router();
