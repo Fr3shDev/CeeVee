@@ -9,10 +9,16 @@ const router = Router();
 
 router.post('/', async (request: Request, response: Response): Promise<void> => {
     const { error } = validateUser(request.body);
-    if (error) return response.status(400).send(error.details[0].message);
+    if (error){
+        response.status(400).send(error.details[0].message);
+        return;
+    } 
 
     let user = await User.findOne({ email: request.body.email})
-    if (user) return response.status(400).send('User already registered');
+    if (user) {
+        response.status(400).send('User already registered');
+        return;
+    }
 
     user = new User({
         username: request.body.username,
