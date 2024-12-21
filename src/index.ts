@@ -3,6 +3,9 @@ import passport from "passport";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan = require("morgan");
+import mongoose from "mongoose";
+
+mongoose.connect('mongodb://localhost/ceevee').then(() => console.log('Connected to MongoDB')).catch(error => console.error('Could not connect to MongoDB', error));
 
 // The order of imports is important
 dotenv.config();
