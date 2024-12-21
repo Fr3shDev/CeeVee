@@ -7,7 +7,7 @@ const router = Router();
 
 
 
-router.post('/', async (request: Request, response: Response) => {
+router.post('/', async (request: Request, response: Response): Promise<void> => {
     const { error } = validateUser(request.body);
     if (error) return response.status(400).send(error.details[0].message);
 
