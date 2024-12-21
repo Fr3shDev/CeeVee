@@ -28,7 +28,7 @@ router.post('/', async (request: Request, response: Response): Promise<void> => 
 
     await user.save();
 
-    response.send(_.pick(user, ['username', 'email']));
+    response.send(_.pick(user, ['_id', 'username', 'email']));
 });
 
 // /api/users
