@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 import { createUser, getUser, getUsers } from "../handlers/users";
 import { User, validateUser } from "../models/user";
+import _ from "lodash";
 
 const router = Router();
 
@@ -27,7 +28,10 @@ router.post('/', async (request: Request, response: Response): Promise<void> => 
 
     await user.save();
 
-    response.send(user);
+    response.send({
+        username: user.username,
+        email: user.email
+    });
 });
 
 // /api/users
