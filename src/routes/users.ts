@@ -2,6 +2,7 @@ import { Router, Request, Response } from "express";
 import { createUser, getUser, getUsers } from "../handlers/users";
 import { User, validateUser } from "../models/user";
 import _ from "lodash";
+import bcrypt from "bcrypt";
 
 const router = Router();
 
