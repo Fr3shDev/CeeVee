@@ -1,11 +1,11 @@
 import express from 'express';
-import userRouter from './routes/users';
+import authRouter from './routes/auth';
 
 export function createApp() {
     const app = express();
     app.use(express.json());
 
-    app.use('/api/users', userRouter);
+    app.use('/api/auth/register', authRouter);
 
     return app;
 }
