@@ -5,7 +5,7 @@ export function createApp() {
     const app = express();
     app.use(express.json());
 
-    app.use('/api/auth/register', authRouter);
+    app.use('/api', authRouter);
 
     return app;
 }
