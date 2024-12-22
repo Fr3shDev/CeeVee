@@ -1,5 +1,5 @@
 import { mockRequest, mockResponse } from "../../__mocks__"
-import { getUsers } from "../../handlers/users"
+import { getUsers } from "../../controllers/users"
 
 describe('getUsers', () => {
     it('should return an array of users', () => {
