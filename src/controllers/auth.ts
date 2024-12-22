@@ -27,19 +27,3 @@ export async function registerUser (request: Request, response: Response) {
 
     response.send(_.pick(user, ['id', 'email', 'username']));
 }
-
-export function getUsers(request: Request, response: Response) {
-    response.send([]);
-}
-
-export function getUser(request: Request, response: Response) {
-    response.send({});
-}
-
-export function createUser(request: Request<{}, {}, CreateUserDto, CreateUserQueryParams>, response: Response<UserResponseInterface>) {
-    response.status(201).send({
-        id: 1,
-        username: "Hans",
-        email: "hans@gmail.com"
-    })
-}
