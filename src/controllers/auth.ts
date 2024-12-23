@@ -18,18 +18,4 @@ export async function registerUser (request: Request, response: Response) {
         const err = error as Error;
         response.status(400).send(err.message);
     }
-
-    // let user = await User.findOne({ email: request.body.email})
-    // if (user) {
-    //     response.status(400).send('User already registered');
-    //     return;
-    // }
-
-    // user = new User(_.pick(request.body, ['username', 'email', 'password']));
-    // const salt = await bcrypt.genSalt(10);
-    // user.password = await bcrypt.hash(user.password, salt);
-
-    // await user.save();
-
-    // response.send(_.pick(user, ['id', 'email', 'username']));
 }
