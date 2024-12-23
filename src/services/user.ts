@@ -17,3 +17,15 @@ export async function registerUserService(user: UserInterface) {
 
     return _.pick(newUser, ['id', 'email', 'username']);
 }
+
+export async function loginUserService(user: UserInterface) {
+    const existingUser = await User.findOne({ email: user.email});
+    if (!existingUser) {
+        throw new Error('Invalid email or password');
+    }
+
+    const validPassword = await bcrypt.compare(user.password, existingUser.password);
+    if (!validPassword) {
+        throw new Error('Invalid email or password');
+    }
+}
