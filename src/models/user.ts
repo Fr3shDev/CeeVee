@@ -29,7 +29,7 @@ const User = mongoose.model('User', new mongoose.Schema({
     }
 }));
 
-function validateUser(user: UserInterface) {
+function validateNewUser(user: UserInterface) {
 
     const schema = Joi.object({
         username: Joi.string().min(5).max(50).required(),
@@ -40,4 +40,4 @@ function validateUser(user: UserInterface) {
     return schema.validate(user);
 }
 
-export { User, validateUser };
+export { User, validateNewUser };
