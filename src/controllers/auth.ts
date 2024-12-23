@@ -1,11 +1,11 @@
 import {Request, Response } from "express-serve-static-core";
-import { User, validateUser } from "../models/user";
+import { User, validateNewUser } from "../models/user";
 import _ from "lodash";
 import bcrypt from "bcrypt";
 import { registerUserService } from "../services/user";
 
 export async function registerUser (request: Request, response: Response) {
-    const { error } = validateUser(request.body);
+    const { error } = validateNewUser(request.body);
     if (error) {
         response.status(400).send(error.details[0].message);
         return;
