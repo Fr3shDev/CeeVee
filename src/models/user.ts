@@ -1,6 +1,6 @@
 import Joi from "joi";
 import mongoose from "mongoose";
-import { UserInterface } from "interfaces/user.interface";
+import { NewUserInterface, UserInterface } from "interfaces/user.interface";
 
 // This returns a class so we use pascal naming convention 'User'
 const User = mongoose.model('User', new mongoose.Schema({
@@ -29,7 +29,7 @@ const User = mongoose.model('User', new mongoose.Schema({
     }
 }));
 
-function validateNewUser(user: UserInterface) {
+function validateNewUser(user: NewUserInterface) {
 
     const schema = Joi.object({
         username: Joi.string().min(5).max(50).required(),
@@ -40,4 +40,13 @@ function validateNewUser(user: UserInterface) {
     return schema.validate(user);
 }
 
-export { User, validateNewUser };
+function validateUser(user: UserInterface) {
+    const schema = Joi.object({
+        email: Joi.string().min(5).max(255).required().email(),
+        password: Joi.string().min(5).max(1024).required(),
+    });
+
+    return schema.validate(user);
+}
+
+export { User, validateNewUser, validateUser };
