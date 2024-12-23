@@ -1,9 +1,11 @@
 import bcrypt from "bcrypt";
 import { User } from "../models/user";
-import { UserInterface } from "interfaces/user.interface";
+import { UserInterface, NewUserInterface } from "interfaces/user.interface";
 import _ from "lodash";
+import jwt from "jsonwebtoken";
 
-export async function registerUserService(user: UserInterface) {
+
+export async function registerUserService(user: NewUserInterface) {
     const existingUser = await User.findOne({ email: user.email});
     if (existingUser) {
         throw new Error('User already registered');
@@ -27,5 +29,14 @@ export async function loginUserService(user: UserInterface) {
     const validPassword = await bcrypt.compare(user.password, existingUser.password);
     if (!validPassword) {
         throw new Error('Invalid email or password');
+    }
+
+    const accessToken = jwt.sign({ id: existingUser._id, username: existingUser.username, email: existingUser.email}, 'jwtPrivateKey');
+
+    return {
+        id: existingUser._id.toString(),
+        username: existingUser.username,
+        email: existingUser.email,
+        accessToken
     }
 }
