@@ -1,17 +1,17 @@
-import { createApp } from "./createApp";
-import passport from "passport";
 import dotenv from "dotenv";
+dotenv.config();
+import { createApp } from "./createApp";
+// The order of imports is important
+import config from "config";
+import passport from "passport";
 import helmet from "helmet";
 import morgan = require("morgan");
 import mongoose from "mongoose";
 
 mongoose.connect('mongodb://localhost/ceevee').then(() => console.log('Connected to MongoDB')).catch(error => console.error('Could not connect to MongoDB', error))
 
-// The order of imports is important
-dotenv.config();
-import config from "config";
 
-if(!process.env.CeeVee_JWT_PRIVATE_KEY) {
+if(!config.get('jwtPrivateKey')) {
     console.error('FATAL ERROR: CeeVee_JWT_PRIVATE_KEY is not defined.');
     process.exit(1);
 }
