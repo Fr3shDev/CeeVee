@@ -1,3 +1,7 @@
 {
-    "name": "CeeVee"
+    "name": "CeeVee",
+    "jwtPrivateKey": "",
+    "mail": {
+        "password": ""
+    }
 }

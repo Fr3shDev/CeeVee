@@ -32,7 +32,7 @@ export async function loginUserService(user: UserInterface) {
         throw new Error('Invalid email or password');
     }
 
-    const accessToken = jwt.sign({ id: existingUser._id, username: existingUser.username, email: existingUser.email}, process.env.CeeVee_JWT_PRIVATE_KEY!);
+    const accessToken = jwt.sign({ id: existingUser._id, username: existingUser.username, email: existingUser.email}, config.get('jwtPrivateKey'));
 
     return {
         id: existingUser._id.toString(),

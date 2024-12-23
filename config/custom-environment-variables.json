@@ -1,4 +1,5 @@
 {
+    "jwtPrivateKey": "CeeVee_JWT_PRIVATE_KEY",
     "mail": {
         "password": "CeeVee_PASSWORD"
     }
