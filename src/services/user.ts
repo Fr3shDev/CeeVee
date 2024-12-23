@@ -1,3 +1,4 @@
+import config from "config";
 import bcrypt from "bcrypt";
 import { User } from "../models/user";
 import { UserInterface, NewUserInterface } from "interfaces/user.interface";
@@ -31,7 +32,7 @@ export async function loginUserService(user: UserInterface) {
         throw new Error('Invalid email or password');
     }
 
-    const accessToken = jwt.sign({ id: existingUser._id, username: existingUser.username, email: existingUser.email}, 'jwtPrivateKey');
+    const accessToken = jwt.sign({ id: existingUser._id, username: existingUser.username, email: existingUser.email}, process.env.CeeVee_JWT_PRIVATE_KEY!);
 
     return {
         id: existingUser._id.toString(),
