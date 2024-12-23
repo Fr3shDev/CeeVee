@@ -3,7 +3,7 @@ dotenv.config();
 import { createApp } from "./createApp";
 // The order of imports is important
 import config from "config";
-import passport from "passport";
+import cors from "cors";
 import helmet from "helmet";
 import morgan = require("morgan");
 import mongoose from "mongoose";
@@ -18,6 +18,7 @@ if(!config.get('jwtPrivateKey')) {
 
 const app = createApp();
 app.use(helmet());
+app.use(cors());
 
 console.log('Application Name: ' + config.get('name'))
 console.log('Mail Server: ' + config.get('mail.host'))
