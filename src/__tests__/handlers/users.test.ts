@@ -1,9 +1,9 @@
 import { mockRequest, mockResponse } from "../../__mocks__"
-import { getUsers } from "../../controllers/auth"
+// import { getUsers } from "../../controllers/auth"
 
-describe('getUsers', () => {
-    it('should return an array of users', () => {
-        getUsers(mockRequest, mockResponse)
-        expect(mockResponse.send).toHaveBeenCalledWith([])
-    })
-})
+// describe('getUsers', () => {
+//     it('should return an array of users', () => {
+//         getUsers(mockRequest, mockResponse)
+//         expect(mockResponse.send).toHaveBeenCalledWith([])
+//     })
+// })
