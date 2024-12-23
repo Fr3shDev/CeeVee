@@ -11,6 +11,11 @@ mongoose.connect('mongodb://localhost/ceevee').then(() => console.log('Connected
 dotenv.config();
 import config from "config";
 
+if(!process.env.CeeVee_JWT_PRIVATE_KEY) {
+    console.error('FATAL ERROR: CeeVee_JWT_PRIVATE_KEY is not defined.');
+    process.exit(1);
+}
+
 const app = createApp();
 app.use(helmet());
 
